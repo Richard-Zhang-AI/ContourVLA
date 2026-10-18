@@ -1,8 +1,8 @@
 <div align="center">
 
-<h1><img src="asset/contour_logo.svg" alt="ContourVLA logo" height="72" style="vertical-align: middle;">&nbsp;ContourVLA</h1>
+<h1><img src="asset/contour_logo.svg" alt="ContourVLA logo" height="52" style="vertical-align: middle;">&nbsp;ContourVLA</h1>
 
-<h2>Contour Evolution for Referring-Expression Segmentation</h2>
+<h1>Contour Evolution for Referring-Expression Segmentation</h1>
 
 <p>
   <a href="https://arxiv.org/abs/2610.12107"><img src="asset/arxiv_logo.svg" alt="arXiv" height="22"></a>
