@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+*.egg-info/
+checkpoints/
+data/
+runs/
+outputs/
+logs/
+*.log
+*.pt
+*.pth
+*.safetensors
+eval_gres/
+ckpts/*
+!ckpts/.gitkeep

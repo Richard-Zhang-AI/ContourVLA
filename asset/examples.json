@@ -1,0 +1,54 @@
+{
+  "dataset": "gRefCOCO validation examples",
+  "license_note": "Images are from COCO and remain subject to the original dataset license.",
+  "examples": [
+    {
+      "id": "example_01",
+      "image": "examples/example_01.jpg",
+      "expression": "a mouse beside a laptop and a little boy sitting far from us is looking at a laptop",
+      "difficulty": "small and multiple objects"
+    },
+    {
+      "id": "example_02",
+      "image": "examples/example_02.jpg",
+      "expression": "the guy with naked upper body walk away from us to the sea and a red frisbee being catcheid by the dog",
+      "difficulty": "small object and long expression"
+    },
+    {
+      "id": "example_03",
+      "image": "examples/example_03.jpg",
+      "expression": "a guy sitting down looking at the camera smiling and a racket putting on the ground",
+      "difficulty": "small object and multiple objects"
+    },
+    {
+      "id": "example_04",
+      "image": "examples/example_04.jpg",
+      "expression": "a guy holding a phone and a scissors held by the girl",
+      "difficulty": "multiple objects"
+    },
+    {
+      "id": "example_05",
+      "image": "examples/example_05.jpg",
+      "expression": "clock on top and clock facing down",
+      "difficulty": "repeated object category"
+    },
+    {
+      "id": "example_06",
+      "image": "examples/example_06.jpg",
+      "expression": "a clock and a girl with white shirt in the middle",
+      "difficulty": "multiple objects"
+    },
+    {
+      "id": "example_07",
+      "image": "examples/example_07.jpg",
+      "expression": "a glass of lemon water on the left and a bowl of colslaw",
+      "difficulty": "small objects and multiple objects"
+    },
+    {
+      "id": "example_08",
+      "image": "examples/example_08.jpg",
+      "expression": "man in plaid shirt and lady in blue",
+      "difficulty": "multiple people"
+    }
+  ]
+}

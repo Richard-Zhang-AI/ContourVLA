@@ -1,0 +1,121 @@
+
+backbone:
+  checkpoint_path: ckpts/contourvla.pt
+  torch_dtype: bfloat16
+  attn_implementation: sdpa
+  in_token_limit: 2560
+  instance_layer: -1
+  grid_layer: 18
+  freeze_vision: true
+  freeze_projector: false
+  llm_lora_rank: 32
+  llm_lora_alpha: 64
+  gradient_checkpointing: false
+
+pixel_decoder:
+  hidden_dim: 256
+  output_stride: 2
+  max_stem_side: 896
+  num_fusion_blocks: 2
+  pyramid_levels: 4
+  pyramid_depth: 2
+  norm: channel
+  use_llm_features: true
+
+action_decoder:
+  hidden_dim: 256
+  nheads: 8
+  num_layers: 6
+  dim_feedforward: 1024
+  chunk_size: 4
+  num_calls: 2
+  share_call_weights: true
+  max_step: 0.2
+  roi_output_size: 7
+  roi_expand: 1.25
+  normal_samples: 11
+  normal_span: 0.25
+
+contour:
+  num_points: 128
+  min_points: 64
+  dynamic_points: true
+  point_spacing_px: 8.0
+  point_reference_side: 640
+  point_quantum: 8
+  init_mode: ellipse
+  match_mode: arclength_aligned
+  gt_source: polygon
+  box_jitter: 0.05
+  box_jitter_final: 0.10
+  box_jitter_ramp_steps: 3000
+
+loss:
+  detection_weight: 1.0
+  segmentation_weight: 2.0
+  segmentation_fallback: 0.25
+  normalize_by_box: true
+  smooth_l1_beta: 0.05
+  step_weight_power: 1.0
+  sdf_weight: 0.178
+  sdf_grid: 16
+  sdf_truncation: 0.25
+  region_weight: 0.35
+  soft_iou_temperature: 0.0025
+  travel_weight: 1.0
+  smoothness_weight: 0.02
+  spacing_weight: 0.05
+
+data:
+  dataset: grefcoco
+  root: data
+  split: train
+  val_split: val
+  split_by: unc
+  max_instances: 16
+  keep_no_target: true
+  num_workers: 8
+  cache_dir: data/cache
+
+train:
+  output_dir: outputs/stage_sft
+  batch_size: 2
+  grad_accum: 3
+  max_steps: 6000
+  warmup_steps: 300
+  lr: 1.0e-4
+  backbone_lr: 2.0e-6
+  weight_decay: 0.05
+  grad_clip: 1.0
+  segmentation_updates_backbone: false
+  freeze_backbone_after: 750
+  log_every: 20
+  save_every: 2000
+  eval_every: 250
+  eval_samples: 200
+  best_metric: mask_iou
+
+inference:
+  generation_mode: slow
+  max_new_tokens: 512
+  temperature: 0.0
+  top_p: null
+  repetition_penalty: 1.0
+
+visualization:
+  every: 500
+  num_samples: 8
+  source: both
+  max_side: 640
+  save_to_disk: true
+  draw_initial: true
+
+wandb:
+  enabled: false
+  project: contourvla
+  run_name: ""
+  mode: disabled
+
+router:
+  enabled: true
+  stride: 4

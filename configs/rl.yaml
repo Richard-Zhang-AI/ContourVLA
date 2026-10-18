@@ -1,0 +1,47 @@
+
+extends: sft.yaml
+
+
+train:
+  init_from: outputs/stage_sft/best.pt
+  init_keep: ""
+
+  output_dir: outputs/stage_rl
+  lr: 1.0e-5
+  backbone_lr: 2.0e-6
+  freeze_backbone_after: 0
+  max_steps: 1500
+  warmup_steps: 50
+  batch_size: 1
+  grad_accum: 2
+  eval_every: 100
+  save_every: 500
+  log_every: 1
+  best_metric: mask_iou
+
+rl:
+  joint_training: true
+  action_std: 0.05
+  action_loss_weight: 1.0
+  group: 8
+  temperature: 0.7
+  temperature_jitter: 0.05
+  top_p: 0.9
+
+
+  epsilon: 0.1
+  dustbin: 0.25
+  credit_blend: 0.5
+
+
+  clip: 0.2
+  kl_weight: 0.02
+  reference: initial
+  advantage_floor: 0.02
+  action_advantage_floor: 0.001
+
+
+  force_refusal: true
+  negative_alpha: 0.5
+  negative_share: 0.25
+
